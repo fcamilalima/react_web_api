@@ -20,6 +20,7 @@ let initialState = [
 
 function App() {
   const [atividades, setAtividades] = useState(initialState)
+  const [atividade, setAtividade] = useState({})
 
   function addAtividade(e){
     e.preventDefault();
@@ -35,6 +36,10 @@ function App() {
     setAtividades([...atividades, {...atividade}]);
   }
 
+  function pegarAtividade(id) {
+    const atividadeEditada = atividades.filter(atividade => atividade.id)
+    setAtividade(atividadeEditada[0])
+  }
   function deletarAtividade(id) {
     const atividadesFiltradas = atividades.filter(atividade => atividade.id !== id);
     setAtividades([...atividadesFiltradas]);
@@ -44,10 +49,13 @@ function App() {
     <>
       <AtividadeForm 
         addAtividade={addAtividade}
+        ativSelecionada={atividade}
         atividades={atividades}
       />
       <AtividadeLista 
         atividades={atividades}
+        atividade={atividade}
+        pegarAtividade={pegarAtividade}
         deletarAtividade={deletarAtividade}
       />
     </>

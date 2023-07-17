@@ -10,6 +10,7 @@ export default function AtividadeLista(props) {
               key={ativ.id} 
               ativ={ativ}
               deletarAtividade={props.deletarAtividade}
+              pegarAtividade={props.pegarAtividade}
             />
           ))
         }
